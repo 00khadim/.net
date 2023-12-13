@@ -157,3 +157,4 @@ C:\Users\khadi\Desktop\ISITECH\B3\.NET\monProjet\BookStoreAPI\obj\Debug\net8.0\s
 C:\Users\khadi\Desktop\ISITECH\B3\.NET\monProjet\BookStoreAPI\obj\Debug\net8.0\BookStoreAPI.csproj.CopyComplete
 C:\Users\khadi\Desktop\ISITECH\B3\.NET\monProjet\BookStoreAPI\obj\Debug\net8.0\BookStoreAPI.genruntimeconfig.cache
 C:\Users\khadi\Desktop\ISITECH\B3\.NET\monProjet\BookStoreAPI\obj\Debug\net8.0\ref\BookStoreAPI.dll
+C:\Users\khadi\Desktop\ISITECH\B3\.NET\monProjet\BookStoreAPI\obj\Debug\net8.0\BookStoreAPI.sourcelink.json

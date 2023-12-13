@@ -4,41 +4,50 @@ using BookStoreAPI.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace BookStoreAPI.Controllers; // BookStoreAPI est l'espace de nom racine de mon projet 
-
-
-// this designe la classe dans laquelle on se trouve
-
-
-// Ceci est une annotation, elle permet de définir des métadonnées sur une classe
-// Dans ce contexte elle permet de définir que la classe BookController est un contrôleur d'API
-// On parle aussi de decorator / décorateur
-[ApiController]
-[Route("api/[controller]")]
-public class BookController : ControllerBase
+namespace BookStoreAPI.Controllers
 {
-
-    // Ceci est une annotation, elle permet de définir des métadonnées sur une méthode
-    // ActionResult designe le type de retour de la méthode de controller d'api
-    [HttpGet]
-    public ActionResult<List<Book>> GetBooks()
+    [ApiController]
+    [Route("api/[controller]")]
+    public class BookController : ControllerBase
     {
-
-        var books = new List<Book>
+        [HttpGet]
+        public ActionResult<List<Book>> GetBooks()
         {
-            new() { Id = 1, Title = "Le seigneur des anneaux", Author = "J.R.R Tolkien" }
-        };
+            var books = new List<Book>
+            {
+                new Book { Id = 1, Title = "Le seigneur des anneaux", Author = "J.R.R Tolkien" }
+            };
 
-        return Ok(books);
+            return Ok(books);
+        }
 
-    }
+        [HttpPost]
+        public IActionResult CreateBook(Book book)
+        {
+            Console.WriteLine(book.Title);
 
-    [HttpPost]
-    public IActionResult CreateBook(Book book)
-    {
+            return CreatedAtAction(nameof(GetBooks), new { id = book.Id }, book);
+        }
 
-        Console.WriteLine(book.Title);
+        [HttpPut("{id}")]
+        public IActionResult PutBook(int id, [FromBody] Book book)
+        {
+            if (id != book.Id)
+            {
+                return BadRequest();
+            }
 
-        return CreatedAtAction(nameof(GetBooks), new { id = book.Id }, book);
+            // TODO: Mettez à jour le livre correspondant à l'ID dans votre base de données
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteBook(int id)
+        {
+            // TODO: Supprimez le livre correspondant à l'ID dans votre base de données
+
+            return NoContent();
+        }
     }
 }
